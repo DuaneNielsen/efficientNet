@@ -39,7 +39,6 @@ if __name__ == '__main__':
         optim = Adam(eff_net.parameters(), lr=config.lr)
 
     ds = MNIST('~/.mnist', train=True, download=True, transform=transforms.ToTensor())
-    ds = Subset(ds, list(range(1000)))
     dl = DataLoader(ds, batch_size=config.batch_size)
 
     test_s = MNIST('~/.mnist', train=False, download=True, transform=transforms.ToTensor())
