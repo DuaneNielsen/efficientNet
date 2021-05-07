@@ -12,6 +12,7 @@ from torchlars import LARS
 from argparse import ArgumentParser
 import wandb
 import efficient_net
+import os
 
 if __name__ == '__main__':
 
@@ -22,6 +23,9 @@ if __name__ == '__main__':
     args.add_argument('--seed', type=int)
     args.add_argument('--lr', type=float, default=1e-4)
     config = args.parse_args()
+
+    if 'DEVICE' in os.environ:
+        config.device = os.environ['DEVICE']
 
     wandb.init(project='EfficientNet_MNIST', config=config)
 
